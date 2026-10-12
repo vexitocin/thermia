@@ -304,8 +304,8 @@ last row of Spotify's Settings, sorts every
 setting by the part of Spotify it changes, so a part's glass, its hide switches and its flags sit on
 one page, the mod's own rows first and Spotify's flags below them or on a sub page named after what
 they change. It opens on the Appearance card: Redesigned UI, then the stored look's colour theme, and in the native
-look AMOLED (the redesign is always black); the redesign offers named colour presets, a custom colour picker,
-Spotify's green and a built-in typeface choice. Redesigned UI is the one switch between the two looks (see Layers): it glows
+look AMOLED (the redesign is always black); the redesign offers named colour presets, custom `#RRGGBB` input,
+Spotify's green and a typeface choice from the fonts installed on the device. Redesigned UI is the one switch between the two looks (see Layers): it glows
 (Settings/SGGlowSwitch), its ⓘ says what it changes, and flipping it offers to restart Spotify.
 The pages show only what the stored look has: a page opened after flipping the switch already shows
 what the restart will bring. In the redesign Karaoke comes next, on a card of its own: Sing's switch and its

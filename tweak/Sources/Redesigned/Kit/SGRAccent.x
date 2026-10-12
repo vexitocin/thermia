@@ -88,32 +88,17 @@ void SGRSetThemeAtIndex(NSUInteger index) {
     if (index < themePresets().count) SGSetInt(SGRKeyAccent, SGRThemeRGBAtIndex(index));
 }
 
-#pragma mark - picker
-
-@interface SGRAccentPicker : NSObject <UIColorPickerViewControllerDelegate>
-@end
-
-@implementation SGRAccentPicker
-
-- (void)colorPickerViewControllerDidFinish:(UIColorPickerViewController *)picker {
-    CGFloat r = 0, g = 0, b = 0, a = 0;
-    [picker.selectedColor getRed:&r green:&g blue:&b alpha:&a];
-    uint32_t rgb = ((uint32_t)lround(MIN(1, MAX(0, r)) * 255) << 16)
-                 | ((uint32_t)lround(MIN(1, MAX(0, g)) * 255) << 8)
-                 | (uint32_t)lround(MIN(1, MAX(0, b)) * 255);
-    SGSetInt(SGRKeyAccent, rgb);
-}
-
-@end
-
-void SGRPickAccent(void) {
-    static SGRAccentPicker *delegate;
-    if (!delegate) delegate = [SGRAccentPicker new];
-    UIColorPickerViewController *picker = [UIColorPickerViewController new];
-    picker.supportsAlpha = NO;
-    picker.selectedColor = SGRAccentColor() ?: [UIColor colorWithRed:0x1E / 255.0 green:0xD7 / 255.0 blue:0x60 / 255.0 alpha:1];
-    picker.delegate = delegate;
-    [SGTopController() presentViewController:picker animated:YES completion:nil];
+BOOL SGRSetAccentHex(NSString *hex) {
+    NSString *value = [[hex stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet] uppercaseString];
+    if ([value hasPrefix:@"#"]) value = [value substringFromIndex:1];
+    if (value.length != 6) return NO;
+    NSCharacterSet *nonHex = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789ABCDEF"] invertedSet];
+    if ([value rangeOfCharacterFromSet:nonHex].location != NSNotFound) return NO;
+    NSScanner *scanner = [NSScanner scannerWithString:value];
+    unsigned int rgb = 0;
+    if (![scanner scanHexInt:&rgb] || !scanner.isAtEnd) return NO;
+    SGSetInt(SGRKeyAccent, (NSInteger)rgb);
+    return YES;
 }
 
 // A darker green than the token comes out as the accent darkened by the same amount, so the two

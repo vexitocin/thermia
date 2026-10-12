@@ -74,7 +74,7 @@ static UIImage *swatchImage(UIColor *color) {
         cell.contentConfiguration = content;
         if (SGRThemeSelectedIndex() == (NSInteger)index) cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
-        SGFillCell(cell, @"Custom colour", @"Choose any accent colour", nil, nil);
+        SGFillCell(cell, @"Enter hex code", @"Use #RRGGBB", nil, nil);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
@@ -84,7 +84,32 @@ static UIImage *swatchImage(UIColor *color) {
 - (void)tableView:(UITableView *)table didSelectRowAtIndexPath:(NSIndexPath *)path {
     [table deselectRowAtIndexPath:path animated:YES];
     if (path.row == (NSInteger)SGRThemeCount()) {
-        SGRPickAccent();
+        UIAlertController *entry = [UIAlertController alertControllerWithTitle:@"Accent hex code"
+                                                                        message:@"Enter six hex digits, with or without #."
+                                                                 preferredStyle:UIAlertControllerStyleAlert];
+        [entry addTextFieldWithConfigurationHandler:^(UITextField *field) {
+            field.placeholder = @"#RRGGBB";
+            field.text = SGRAccentLabel().length == 7 && [SGRAccentLabel() hasPrefix:@"#"] ? SGRAccentLabel() : nil;
+            field.keyboardType = UIKeyboardTypeASCIICapable;
+            field.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+            field.autocorrectionType = UITextAutocorrectionTypeNo;
+            field.clearButtonMode = UITextFieldViewModeWhileEditing;
+        }];
+        [entry addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [entry addAction:[UIAlertAction actionWithTitle:@"Apply" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            if (SGRSetAccentHex(entry.textFields.firstObject.text)) {
+                [self.tableView reloadData];
+                return;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController *invalid = [UIAlertController alertControllerWithTitle:@"Invalid hex code"
+                                                                                  message:@"Enter exactly six hexadecimal digits, for example #37F200."
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+                [invalid addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                [self presentViewController:invalid animated:YES completion:nil];
+            });
+        }]];
+        [self presentViewController:entry animated:YES completion:nil];
         return;
     }
     SGRSetThemeAtIndex((NSUInteger)path.row);

@@ -10,13 +10,21 @@
 // In the order the list shows them: the file in icons/, and the name the list gives it. Spotify is the
 // IPA's own icon, iOS's primary one.
 static NSArray<NSString *> *iconFiles(void) {
-    return @[@"Spotify", @"Glass", @"Green", @"White", @"Inverted", @"Pink", @"Blue", @"Hypothermia",
-             @"Red", @"Coral", @"Teal", @"Mint", @"Yellow", @"Gold", @"Purple", @"Indigo", @"Magenta", @"Orange", @"Lime"];
+    return @[@"Spotify", @"Glass", @"Green", @"White", @"Inverted", @"Pride", @"TransPride", @"BiPride",
+             @"LesbianPride", @"NonbinaryPride", @"PanPride", @"AcePride", @"Pink", @"Bubblegum", @"HotPink",
+             @"Magenta", @"Red", @"Vermilion", @"Crimson", @"Burgundy", @"Coral", @"Peach", @"Tangerine",
+             @"Orange", @"Copper", @"Gold", @"Yellow", @"Lemon", @"Lime", @"Olive", @"Emerald",
+             @"Forest", @"Mint", @"Seafoam", @"Teal", @"Cyan", @"Sky", @"Blue", @"Hypothermia",
+             @"Navy", @"Indigo", @"Periwinkle", @"Lavender", @"Purple", @"Plum", @"Silver", @"Charcoal"];
 }
 
 static NSArray<NSString *> *iconTitles(void) {
-    return @[@"Spotify", @"Liquid Glass", @"Green", @"White", @"Inverted", @"Pink", @"Blue", @"Hypothermia",
-             @"Red", @"Coral", @"Teal", @"Mint", @"Yellow", @"Gold", @"Purple", @"Indigo", @"Magenta", @"Orange", @"Lime"];
+    return @[@"Spotify", @"Liquid Glass", @"Green", @"White", @"Inverted", @"Pride", @"Trans Pride", @"Bi Pride",
+             @"Lesbian Pride", @"Nonbinary Pride", @"Pan Pride", @"Ace Pride", @"Pink", @"Bubblegum", @"Hot Pink",
+             @"Magenta", @"Red", @"Vermilion", @"Crimson", @"Burgundy", @"Coral", @"Peach", @"Tangerine",
+             @"Orange", @"Copper", @"Gold", @"Yellow", @"Lemon", @"Lime", @"Olive", @"Emerald",
+             @"Forest", @"Mint", @"Seafoam", @"Teal", @"Cyan", @"Sky", @"Blue", @"Hypothermia",
+             @"Navy", @"Indigo", @"Periwinkle", @"Lavender", @"Purple", @"Plum", @"Silver", @"Charcoal"];
 }
 
 static NSString *alternateName(NSString *file) {

@@ -23,13 +23,21 @@ static NSArray<NSString *> *typefaceFamilies(void) {
     static NSArray<NSString *> *families;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        families = @[@"", @"Avenir Next", @"Georgia", @"Futura", @"Gill Sans", @"Palatino", @"Menlo"];
+        NSMutableArray<NSString *> *all = [@[@"", @"Avenir Next", @"Georgia", @"Futura", @"Gill Sans", @"Palatino", @"Menlo"] mutableCopy];
+        NSMutableArray<NSString *> *installed = [UIFont.familyNames mutableCopy];
+        [installed sortUsingSelector:@selector(compare:)];
+        for (NSString *family in installed)
+            if (family.length && ![all containsObject:family]) [all addObject:family];
+        families = [all copy];
     });
     return families;
 }
 
 NSArray<NSString *> *SGRTypefaceNames(void) {
-    return @[@"SF Pro", @"Avenir Next", @"Georgia", @"Futura", @"Gill Sans", @"Palatino", @"Menlo"];
+    NSMutableArray<NSString *> *names = [NSMutableArray arrayWithCapacity:typefaceFamilies().count];
+    [names addObject:@"SF Pro"];
+    [names addObjectsFromArray:[typefaceFamilies() subarrayWithRange:NSMakeRange(1, typefaceFamilies().count - 1)]];
+    return names;
 }
 
 UIColor *SGRPrimary(void) {

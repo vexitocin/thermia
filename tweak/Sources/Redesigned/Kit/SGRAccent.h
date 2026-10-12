@@ -11,7 +11,7 @@ NSString *SGRThemeNameAtIndex(NSUInteger index);
 NSInteger SGRThemeRGBAtIndex(NSUInteger index);
 NSInteger SGRThemeSelectedIndex(void);
 void SGRSetThemeAtIndex(NSUInteger index);
-void SGRPickAccent(void);        // the system colour picker over the top of the app, stored on the way out
+BOOL SGRSetAccentHex(NSString *hex);
 
 @class SGModRow;
 NSArray<SGModRow *> *SGRAppearanceRows(void);   // the accent colour, for the Appearance card
