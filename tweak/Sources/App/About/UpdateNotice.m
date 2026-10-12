@@ -1,5 +1,6 @@
 // A release notice is offered once per version, after Spotify's own startup screens have settled.
 #import "Core/SGCore.h"
+#import "Settings/SGPageStyle.h"
 #import "About.h"
 #import "App/Onboarding/Onboarding.h"
 
