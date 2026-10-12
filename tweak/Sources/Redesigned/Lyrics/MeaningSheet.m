@@ -61,7 +61,7 @@ static NSString *authorSymbol(SGLyricsMeaningAuthor author) {
     config.baseForegroundColor = SGRAccent();
     config.titleTextAttributesTransformer = ^NSDictionary *(NSDictionary *attributes) {
         NSMutableDictionary *out = [attributes mutableCopy];
-        out[NSFontAttributeName] = [UIFont systemFontOfSize:15 weight:UIFontWeightSemibold];
+        out[NSFontAttributeName] = SGRFontAtSize(15, UIFontWeightSemibold);
         return out;
     };
     UIButton *button = [UIButton buttonWithConfiguration:config primaryAction:nil];
@@ -78,7 +78,7 @@ static NSString *authorSymbol(SGLyricsMeaningAuthor author) {
     _scroll.alwaysBounceVertical = YES;
     [self.view addSubview:_scroll];
 
-    _quote = [self labelWithFont:[UIFont systemFontOfSize:20 weight:UIFontWeightBold] color:SGRPrimary()];
+    _quote = [self labelWithFont:SGRFontAtSize(20, UIFontWeightBold) color:SGRPrimary()];
     UIButtonConfiguration *badge = [UIButtonConfiguration filledButtonConfiguration];
     badge.cornerStyle = UIButtonConfigurationCornerStyleCapsule;
     badge.buttonSize = UIButtonConfigurationSizeMini;
@@ -89,8 +89,8 @@ static NSString *authorSymbol(SGLyricsMeaningAuthor author) {
     _author = [UIButton buttonWithConfiguration:badge primaryAction:nil];
     _author.userInteractionEnabled = NO;
     [_scroll addSubview:_author];
-    _body = [self labelWithFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody] color:SGRPrimary()];
-    _count = [self labelWithFont:[UIFont systemFontOfSize:13 weight:UIFontWeightRegular] color:SGRTertiary()];
+    _body = [self labelWithFont:SGRFont(UIFontTextStyleBody, UIFontWeightRegular, nil) color:SGRPrimary()];
+    _count = [self labelWithFont:SGRFontAtSize(13, UIFontWeightRegular) color:SGRTertiary()];
     _count.numberOfLines = 1;
     _next = [self buttonWithTitle:@"Next" action:@selector(showNext)];
     _open = [self buttonWithTitle:@"View on Genius" action:@selector(openGenius)];

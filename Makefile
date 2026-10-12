@@ -7,9 +7,8 @@ IPA ?= $(firstword $(wildcard ipa/*.ipa))
 FLEX ?= 0
 FLEX_ARG := $(if $(filter 0,$(FLEX)),--no-flex,)
 
-# A local install is renamed and re-iconed so it is told apart from the released app on the home
-# screen.
-DEV_NAME ?= Thermia.dev
+# The installed app uses the same Home Screen name as release builds by default; override to distinguish it.
+DEV_NAME ?= thermia.
 DEV_ICON ?= docs/icon.png
 
 .PHONY: build release install trees session log flags

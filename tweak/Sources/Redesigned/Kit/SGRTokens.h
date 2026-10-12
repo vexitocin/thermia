@@ -2,7 +2,7 @@
 // motion from here, so the screens read as one app and nothing is tuned per screen by hand.
 //
 // Colours are white over the artwork field (SGRField.h), whose colour is kept dark enough that
-// SGRPrimary and SGRSecondary both pass WCAG AA on it. Type is the system font (SF Pro) sized by the
+// SGRPrimary and SGRSecondary both pass WCAG AA on it. Type uses the selected built-in family, sized by the
 // text style and capped, since Spotify's pages lay out for a fixed header height. Motion is springs,
 // critically damped for layout and a little bounce for press feedback; under Reduce Motion both
 // become instant, while crossfades stay, a fade not being motion.
@@ -10,6 +10,8 @@
 // Threading: the constants and the colours are safe anywhere; fonts, SGRAnimate and the
 // accessibility reads are main thread only.
 #import <UIKit/UIKit.h>
+
+#define SGRKeyTypeface @"spotifyglass.redesign.typeface"
 
 extern const CGFloat SGRSideMargin;      // 16, the page's side margin
 extern const CGFloat SGRGrid;            // 8, every gap is a multiple of it
@@ -36,9 +38,11 @@ UIColor *SGRElevated(UIColor *field);
 // Increase Contrast. Never a border around anything -- the redesign's surfaces are told apart by their fill.
 UIColor *SGRHairline(void);
 
-// The system font at the size `style` has for the current content size category, but never larger
-// than it has at `largest`, in `weight`. Callers re-ask on traitCollectionDidChange:.
+// The selected typeface at the size `style` has for the current content size category, but never
+// larger than `largest`, in `weight`. Callers re-ask on traitCollectionDidChange:.
 UIFont *SGRFont(UIFontTextStyle style, UIFontWeight weight, UIContentSizeCategory largest);
+UIFont *SGRFontAtSize(CGFloat size, UIFontWeight weight);
+NSArray<NSString *> *SGRTypefaceNames(void);
 // The same font with digits of one width, so a time or a count does not twitch as it changes.
 UIFont *SGRMonospacedDigitsFont(UIFont *font);
 

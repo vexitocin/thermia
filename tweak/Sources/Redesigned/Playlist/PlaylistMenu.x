@@ -170,8 +170,7 @@ void SGRPlaylistTakeCuration(UIView *cell) {
 
     _word = [UILabel new];
     _word.textColor = UIColor.whiteColor;
-    _word.font = [UIFont systemFontOfSize:[UIFont preferredFontForTextStyle:UIFontTextStyleBody].pointSize
-                                   weight:UIFontWeightRegular];
+    _word.font = SGRFont(UIFontTextStyleBody, UIFontWeightRegular, nil);
     _word.userInteractionEnabled = NO;
     [self addSubview:_word];
 

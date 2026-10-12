@@ -192,7 +192,8 @@ Redesigned:
 
     Kit/          what the redesign builds on (SGRKit.h lists it), the flags it forces (SGRedesign.h, SGRGlassDesign.x for
                   Spotify's own glass design), its repaint hook (SGRRepaint.x), soft top edge, AMOLED black (always on,
-                  SGRAmoled.x) and its own accent colour (SGRAccent.x, stored apart from the native look's); and
+                  SGRAmoled.x) and its own named colour themes and custom accent picker (SGRAccent.x, stored apart from
+                  the native look's); and
                   the curtain the playlist, album and artist pages come in behind (SGRReveal.h): black over the
                   whole page from its first pass until the picture, the field's colour, the header with Play and
                   the first track with its text are all in, and then the page fades in from behind it in one
@@ -302,9 +303,9 @@ Mod Settings, opened by holding Home on the tab bar or from the first row of the
 last row of Spotify's Settings, sorts every
 setting by the part of Spotify it changes, so a part's glass, its hide switches and its flags sit on
 one page, the mod's own rows first and Spotify's flags below them or on a sub page named after what
-they change. It opens on the Appearance card: Redesigned UI, then the stored look's accent colour, and in the native
-look AMOLED (the redesign is always black); Spotify's green is offered from the colour row once a colour
-is set. Redesigned UI is the one switch between the two looks (see Layers): it glows
+they change. It opens on the Appearance card: Redesigned UI, then the stored look's colour theme, and in the native
+look AMOLED (the redesign is always black); the redesign offers named colour presets, a custom colour picker,
+Spotify's green and a built-in typeface choice. Redesigned UI is the one switch between the two looks (see Layers): it glows
 (Settings/SGGlowSwitch), its ⓘ says what it changes, and flipping it offers to restart Spotify.
 The pages show only what the stored look has: a page opened after flipping the switch already shows
 what the restart will bring. In the redesign Karaoke comes next, on a card of its own: Sing's switch and its

@@ -221,14 +221,14 @@ static const CGFloat kSecondShare = 0.67, kThirdShare = 0.54;
         SGRLyricsText text = order[place].integerValue;
         if ((text == SGRLyricsTextPronunciation && !pronunciation) || (text == SGRLyricsTextTranslation && !translation)) continue;
         CGFloat points = shown.count ? sizes[place] : size;
-        UIFont *font = [UIFont systemFontOfSize:points weight:text == SGRLyricsTextTranslation ? UIFontWeightSemibold : UIFontWeightBold];
+        UIFont *font = SGRFontAtSize(points, text == SGRLyricsTextTranslation ? UIFontWeightSemibold : UIFontWeightBold);
         if (text == SGRLyricsTextLyrics) _lyrics = font;
         else if (text == SGRLyricsTextPronunciation) _pronunciation = font;
         else _translation = font;
         [shown addObject:@(text)];
     }
     if (!_lyrics) {   // an order without the lyrics in it is not one to trust
-        _lyrics = [UIFont systemFontOfSize:size weight:UIFontWeightBold];
+        _lyrics = SGRFontAtSize(size, UIFontWeightBold);
         [shown insertObject:@(SGRLyricsTextLyrics) atIndex:0];
     }
     _order = shown;
@@ -237,8 +237,8 @@ static const CGFloat kSecondShare = 0.67, kThirdShare = 0.54;
 
 - (SGRKaraokeStyle *)backing {
     SGRKaraokeStyle *backing = [SGRKaraokeStyle new];
-    backing->_lyrics = [UIFont systemFontOfSize:round(_lyrics.pointSize * kBackingScale) weight:UIFontWeightBold];
-    if (_pronunciation) backing->_pronunciation = [UIFont systemFontOfSize:round(_pronunciation.pointSize * kBackingScale) weight:UIFontWeightBold];
+    backing->_lyrics = SGRFontAtSize(round(_lyrics.pointSize * kBackingScale), UIFontWeightBold);
+    if (_pronunciation) backing->_pronunciation = SGRFontAtSize(round(_pronunciation.pointSize * kBackingScale), UIFontWeightBold);
     NSMutableArray<NSNumber *> *order = [_order mutableCopy];
     [order removeObject:@(SGRLyricsTextTranslation)];
     backing->_order = order;
@@ -1108,7 +1108,7 @@ typedef struct {
     _scroll.delegate = self;
     [self addSubview:_scroll];
     _credit = [[UILabel alloc] initWithFrame:CGRectZero];
-    _credit.font = [UIFont systemFontOfSize:kCreditSize weight:UIFontWeightSemibold];
+    _credit.font = SGRFontAtSize(kCreditSize, UIFontWeightSemibold);
     _credit.textColor = [UIColor colorWithWhite:1 alpha:kCreditAlpha];
     _credit.hidden = YES;
     _crediting = SGFlag(SGKeyLyricsCredit, NO);
@@ -1383,7 +1383,7 @@ typedef struct {
     _builtWidth = self.bounds.size.width;
     CGFloat width = _builtWidth - 2 * _margin;
     if (width <= 0) return;
-    _font = [UIFont systemFontOfSize:_fontSize weight:UIFontWeightBold];
+    _font = SGRFontAtSize(_fontSize, UIFontWeightBold);
     SGRKaraokeStyle *style = _style = [self styleNow];
     NSArray<SGKaraokeLine *> *lines = _lines;
     CGFloat gap = _lineGap;

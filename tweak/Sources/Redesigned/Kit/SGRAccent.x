@@ -18,6 +18,26 @@ static NSInteger sg_accent = -1;   // 0xRRGGBB once chosen, read at launch
 // The redesign's own green until another is picked; Spotify's is a pick of its own, stored as -1.
 static const NSInteger kDefaultAccent = 0x37F200;
 
+static NSArray<NSDictionary *> *themePresets(void) {
+    static NSArray<NSDictionary *> *presets;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        presets = @[
+            @{@"name": @"Spotify green", @"rgb": @(-1)},
+            @{@"name": @"Thermia green", @"rgb": @(0x37F200)},
+            @{@"name": @"Arctic", @"rgb": @(0x83CEFF)},
+            @{@"name": @"Rose", @"rgb": @(0xF65E9D)},
+            @{@"name": @"Sunset", @"rgb": @(0xFF814A)},
+            @{@"name": @"Apple red", @"rgb": @(0xFA243C)},
+            @{@"name": @"SoundCloud orange", @"rgb": @(0xFF5500)},
+            @{@"name": @"Tidal teal", @"rgb": @(0x00B4B4)},
+            @{@"name": @"Violet", @"rgb": @(0xA77BFF)},
+            @{@"name": @"Citrus", @"rgb": @(0xD6E945)},
+        ];
+    });
+    return presets;
+}
+
 static NSInteger chosen(void) {
     NSInteger rgb = SGInt(SGRKeyAccent, kDefaultAccent);
     return rgb >= 0 && rgb <= 0xFFFFFF ? rgb : -1;
@@ -39,7 +59,33 @@ UIColor *SGRAccentColor(void) {
 
 NSString *SGRAccentLabel(void) {
     NSInteger rgb = chosen();
-    return rgb < 0 ? @"Spotify green" : [NSString stringWithFormat:@"#%06lX", (long)rgb];
+    for (NSDictionary *preset in themePresets())
+        if ([preset[@"rgb"] integerValue] == rgb) return preset[@"name"];
+    return [NSString stringWithFormat:@"#%06lX", (long)rgb];
+}
+
+NSUInteger SGRThemeCount(void) {
+    return themePresets().count;
+}
+
+NSString *SGRThemeNameAtIndex(NSUInteger index) {
+    return index < themePresets().count ? themePresets()[index][@"name"] : @"";
+}
+
+NSInteger SGRThemeRGBAtIndex(NSUInteger index) {
+    return index < themePresets().count ? [themePresets()[index][@"rgb"] integerValue] : NSNotFound;
+}
+
+NSInteger SGRThemeSelectedIndex(void) {
+    NSInteger rgb = chosen();
+    NSArray<NSDictionary *> *presets = themePresets();
+    for (NSUInteger index = 0; index < presets.count; index++)
+        if ([presets[index][@"rgb"] integerValue] == rgb) return (NSInteger)index;
+    return NSNotFound;
+}
+
+void SGRSetThemeAtIndex(NSUInteger index) {
+    if (index < themePresets().count) SGSetInt(SGRKeyAccent, SGRThemeRGBAtIndex(index));
 }
 
 #pragma mark - picker

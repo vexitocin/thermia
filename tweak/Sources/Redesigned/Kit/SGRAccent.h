@@ -5,7 +5,12 @@
 #define SGRKeyAccent @"spotifyglass.redesign.accent"   // 0xRRGGBB
 
 UIColor *SGRAccentColor(void);   // nil while Spotify's own green is kept
-NSString *SGRAccentLabel(void);  // "#RRGGBB", or the name of Spotify's own
+NSString *SGRAccentLabel(void);  // the selected theme name, or "#RRGGBB" for a custom colour
+NSUInteger SGRThemeCount(void);
+NSString *SGRThemeNameAtIndex(NSUInteger index);
+NSInteger SGRThemeRGBAtIndex(NSUInteger index);
+NSInteger SGRThemeSelectedIndex(void);
+void SGRSetThemeAtIndex(NSUInteger index);
 void SGRPickAccent(void);        // the system colour picker over the top of the app, stored on the way out
 
 @class SGModRow;

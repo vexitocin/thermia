@@ -36,6 +36,7 @@ while [ $# -gt 0 ]; do
     *) IN="$1"; shift ;;
   esac
 done
+: "${NAME:=thermia.}"
 [ -n "$IN" ] || { echo "no IPA: put a decrypted Spotify .ipa in ipa/, or pass one (make build IPA=path.ipa)" >&2; exit 1; }
 [ -f "$IN" ] || { echo "no such file: $IN" >&2; exit 1; }
 

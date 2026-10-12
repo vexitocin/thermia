@@ -10,11 +10,13 @@
 // In the order the list shows them: the file in icons/, and the name the list gives it. Spotify is the
 // IPA's own icon, iOS's primary one.
 static NSArray<NSString *> *iconFiles(void) {
-    return @[@"Spotify", @"Glass", @"Green", @"White", @"Pink", @"Blue", @"Hypothermia", @"Purple", @"Orange", @"Lime"];
+    return @[@"Spotify", @"Glass", @"Green", @"White", @"Inverted", @"Pink", @"Blue", @"Hypothermia",
+             @"Red", @"Coral", @"Teal", @"Mint", @"Yellow", @"Gold", @"Purple", @"Indigo", @"Magenta", @"Orange", @"Lime"];
 }
 
 static NSArray<NSString *> *iconTitles(void) {
-    return @[@"Spotify", @"Liquid Glass", @"Green", @"White", @"Pink", @"Blue", @"Hypothermia", @"Purple", @"Orange", @"Lime"];
+    return @[@"Spotify", @"Liquid Glass", @"Green", @"White", @"Inverted", @"Pink", @"Blue", @"Hypothermia",
+             @"Red", @"Coral", @"Teal", @"Mint", @"Yellow", @"Gold", @"Purple", @"Indigo", @"Magenta", @"Orange", @"Lime"];
 }
 
 static NSString *alternateName(NSString *file) {

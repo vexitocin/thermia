@@ -15,6 +15,7 @@
 //   402x49 of four ElementContentView<TabBarItemElement> 100x49, each an SPTEncoreIconView 24x24
 //   at y 12.5 over an SPTEncoreLabel at y 35.
 #import "Core/SGCore.h"
+#import "Redesigned/Kit/SGRTokens.h"
 #import "Navbar.h"
 #import "Headers/SPTEncoreIconView.h"
 #import "Shared/Navigation/Links.h"
@@ -109,7 +110,7 @@ static UIView *iconView(NSString *name) {
     CGFloat width = self.bounds.size.width;
     // The glass bar of TabBar.x draws the names; the hidden row keeps its icons for the glyphs.
     _title.hidden = YES;
-    _title.font = sg_tabFont ?: [UIFont systemFontOfSize:10];
+    _title.font = sg_tabFont ?: SGRFontAtSize(10, UIFontWeightRegular);
     _title.frame = CGRectMake(0, CGRectGetMinY(sg_labelBox), width, CGRectGetHeight(sg_labelBox));
     _icon.frame = CGRectMake((width - CGRectGetWidth(sg_iconBox)) / 2, CGRectGetMinY(sg_iconBox),
                              CGRectGetWidth(sg_iconBox), CGRectGetHeight(sg_iconBox));

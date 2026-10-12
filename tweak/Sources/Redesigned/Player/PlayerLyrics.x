@@ -253,13 +253,13 @@ void SGRPlayerForceLandscapeLyrics(void) {
     [self.view addSubview:_cover];
 
     _titleLabel = [UILabel new];
-    _titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleTitle3];
+    _titleLabel.font = SGRFont(UIFontTextStyleTitle3, UIFontWeightRegular, nil);
     _titleLabel.textColor = UIColor.whiteColor;
     _titleLabel.adjustsFontForContentSizeCategory = YES;
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [self.view addSubview:_titleLabel];
     _artistLabel = [UILabel new];
-    _artistLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    _artistLabel.font = SGRFont(UIFontTextStyleSubheadline, UIFontWeightRegular, nil);
     _artistLabel.textColor = [UIColor colorWithWhite:1 alpha:0.68];
     _artistLabel.adjustsFontForContentSizeCategory = YES;
     _artistLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -268,7 +268,7 @@ void SGRPlayerForceLandscapeLyrics(void) {
     _elapsedLabel = [UILabel new];
     _durationLabel = [UILabel new];
     for (UILabel *label in @[_elapsedLabel, _durationLabel]) {
-        label.font = [UIFont monospacedDigitSystemFontOfSize:12 weight:UIFontWeightRegular];
+        label.font = SGRMonospacedDigitsFont(SGRFontAtSize(12, UIFontWeightRegular));
         label.textColor = [UIColor colorWithWhite:1 alpha:0.62];
         [self.view addSubview:label];
     }
@@ -493,7 +493,7 @@ static void dismissLandscapeLyrics(void) {
     _empty = [UILabel new];
     _empty.text = @"Lyrics aren't available for this song.";
     _empty.textColor = SGRSecondary();
-    _empty.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    _empty.font = SGRFont(UIFontTextStyleBody, UIFontWeightRegular, nil);
     _empty.adjustsFontForContentSizeCategory = YES;
     _empty.textAlignment = NSTextAlignmentCenter;
     _empty.numberOfLines = 0;

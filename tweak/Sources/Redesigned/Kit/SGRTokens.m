@@ -19,6 +19,19 @@ const NSTimeInterval SGRCrossfade = 0.35;
 static const NSTimeInterval kLayoutDuration = 0.45, kPressDuration = 0.32;
 static const CGFloat kPressDamping = 0.62;
 
+static NSArray<NSString *> *typefaceFamilies(void) {
+    static NSArray<NSString *> *families;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        families = @[@"", @"Avenir Next", @"Georgia", @"Futura", @"Gill Sans", @"Palatino", @"Menlo"];
+    });
+    return families;
+}
+
+NSArray<NSString *> *SGRTypefaceNames(void) {
+    return @[@"SF Pro", @"Avenir Next", @"Georgia", @"Futura", @"Gill Sans", @"Palatino", @"Menlo"];
+}
+
 UIColor *SGRPrimary(void) {
     return UIColor.whiteColor;
 }
@@ -61,7 +74,20 @@ UIFont *SGRFont(UIFontTextStyle style, UIFontWeight weight, UIContentSizeCategor
     if (largest && UIContentSizeCategoryCompareToCategory(current, largest) == NSOrderedDescending) current = largest;
     UITraitCollection *traits = [UITraitCollection traitCollectionWithPreferredContentSizeCategory:current];
     CGFloat size = [UIFont preferredFontForTextStyle:style compatibleWithTraitCollection:traits].pointSize;
-    return [UIFont systemFontOfSize:size weight:weight];
+    return SGRFontAtSize(size, weight);
+}
+
+UIFont *SGRFontAtSize(CGFloat size, UIFontWeight weight) {
+    NSInteger index = SGInt(SGRKeyTypeface, 0);
+    NSArray<NSString *> *families = typefaceFamilies();
+    if (index <= 0 || index >= (NSInteger)families.count) return [UIFont systemFontOfSize:size weight:weight];
+    NSString *family = families[(NSUInteger)index];
+    if (![UIFont fontNamesForFamilyName:family].count) return [UIFont systemFontOfSize:size weight:weight];
+    UIFontDescriptor *descriptor = [UIFontDescriptor fontDescriptorWithFontAttributes:@{
+        UIFontDescriptorFamilyAttribute: family,
+        UIFontDescriptorTraitsAttribute: @{UIFontWeightTrait: @(weight)}
+    }];
+    return [UIFont fontWithDescriptor:descriptor size:size] ?: [UIFont systemFontOfSize:size weight:weight];
 }
 
 UIFont *SGRMonospacedDigitsFont(UIFont *font) {
