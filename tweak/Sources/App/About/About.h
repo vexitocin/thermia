@@ -3,16 +3,30 @@
 #import "Settings/SGModPage.h"
 
 extern NSString *const SGUpdateCheckedNotification;   // on the main thread, after a check ends either way
+#define SGKeyUpdateNotice @"spotifyglass.update.notice"
 
 // The latest stable GitHub release.
 @interface SGUpdateRelease : NSObject
 @property (nonatomic, copy) NSString *version;   // without the tag's v
 @property (nonatomic, copy) NSString *url;       // the release page, where the .deb is
+@property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSArray *changes;
+@end
+
+@interface SGUpdateChange : NSObject
+@property (nonatomic, copy) NSString *kind;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *url;
 @end
 
 SGUpdateRelease *SGUpdateNewestRelease(void);
+NSArray<SGUpdateRelease *> *SGUpdateReleases(void);
 NSString *SGUpdateVersion(void);  // nil unless GitHub has a release newer than this build
-void SGCheckForUpdate(void);
+BOOL SGUpdateIsNewer(NSString *version);
+NSString *SGUpdateStatus(void);
+void SGCheckForUpdate(BOOL force);
+UIViewController *SGUpdatePage(void);
+void SGWatchForUpdates(void);
 UIViewController *SGLicensesPage(void); // Licenses.m: the mod's license and the third-party ones it ships
 
 // Whether the now playing card on the lock screen can open this build. It depends on the signature,

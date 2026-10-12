@@ -117,15 +117,14 @@ static SGModRow *pageRow(NSString *title, NSString *symbol, UIViewController *(^
 
 static UIViewController *modSettingsPage(void) {
     // Opening the page is the only thing that asks; the cache keeps it to once every six hours.
-    SGCheckForUpdate();
+    SGCheckForUpdate(NO);
     NSMutableArray<SGModSection *> *sections = [NSMutableArray array];
     // A build the lock screen cannot open leads the page, above the tweaks: it is the one thing here
     // that no switch can put right, and it is worth reading before anything else.
     SGModRow *signing = SGSigningWarningRow();
     NSMutableArray<SGModRow *> *topRows = [NSMutableArray array];
     SGModRow *update = SGActionRow(@"Thermia update available", @"Tap to view the latest release", ^{
-        NSString *url = SGUpdateNewestRelease().url;
-        if (url.length) SGOpenURL(url);
+        SGShowPage(SGTopController(), SGUpdatePage());
     });
     update.symbol = @"arrow.down.circle.fill";
     update.color = SGGreen();
@@ -392,4 +391,5 @@ static void updatePlanBadge(UIView *root) {
     SGRequireClasses(@[@"_TtC21Settings_PlatformImpl26SettingsListViewController", @"_TtC23SideDrawer_ListPageImpl18ListViewController"]);
     SGRegisterPages();
     SGCheckSigningOnce();
+    SGWatchForUpdates();
 }
