@@ -100,10 +100,10 @@ contribution; it is ticked once, before the first pull request is merged.
 
 ## Star history
 
-<a href="https://star-history.com/#samj-exe/thermia&Date">
+<a href="https://star-history.com/#vexitocin/thermia&Date">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=samj-exe/thermia&type=Date&theme=dark">
-    <img src="https://api.star-history.com/svg?repos=samj-exe/thermia&type=Date" alt="Star history chart">
+    <img src="https://api.star-history.com/svg?repos=vexitocin/thermia&type=Date" alt="Star history chart">
   </picture>
 </a>
 
