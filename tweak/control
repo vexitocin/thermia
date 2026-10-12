@@ -1,7 +1,7 @@
 Package: com.spotipw
-Name: Taurus
+Name: Thermia
 Architecture: iphoneos-arm
 Description: Liquid Glass for the Spotify iOS app
-Maintainer: Taurus
-Author: Taurus
+Maintainer: Thermia
+Author: Thermia
 Section: Tweaks

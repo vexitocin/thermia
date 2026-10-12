@@ -1,4 +1,4 @@
-// About: the latest Taurus release on GitHub, checked silently and cached for six hours.
+// About: the latest Thermia release on GitHub, checked silently and cached for six hours.
 #import <UIKit/UIKit.h>
 #import "Settings/SGModPage.h"
 

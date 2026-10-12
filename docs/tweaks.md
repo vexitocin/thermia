@@ -271,7 +271,7 @@ App:
 
     ModSettings.x  the root page and the rows that open it from Spotify's settings and the side drawer
     Pages.m        the Appearance card with Redesigned UI, the Player and Lyrics pages, which Navbar page opens
-    About/         the silent check against Taurus's GitHub Releases and the update alert at the top of Mod Settings;
+    About/         the silent check against Thermia's GitHub Releases and the update alert at the top of Mod Settings;
                    backup, the signing warning and the Mod page with the reset
     Onboarding/    the welcome page over Home on the first launch, with Redesigned UI, offered again from the Mod page
 

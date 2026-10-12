@@ -35,18 +35,18 @@ static SGModRow *pageRow(NSString *title, NSString *symbol, UIViewController *(^
     return SGWithSymbol(SGPageRow(title, page), symbol);
 }
 
-@interface SGTaurusSettingsPage : SGModPage
+@interface SGThermiaSettingsPage : SGModPage
 - (instancetype)initWithSections:(NSArray<SGModSection *> *)sections;
 @end
 
-@implementation SGTaurusSettingsPage {
+@implementation SGThermiaSettingsPage {
     UIView *_masthead;
     UILabel *_mastheadTitle, *_mastheadByline, *_compactTitle;
     BOOL _compactTitleVisible;
 }
 
 - (instancetype)initWithSections:(NSArray<SGModSection *> *)sections {
-    return [super initWithTitle:@"taurus" intro:nil sections:sections footer:nil];
+    return [super initWithTitle:@"thermia" intro:nil sections:sections footer:nil];
 }
 
 - (void)viewDidLoad {
@@ -55,7 +55,7 @@ static SGModRow *pageRow(NSString *title, NSString *symbol, UIViewController *(^
     _masthead.backgroundColor = SGPageBackground();
     _masthead.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
     _mastheadTitle = [UILabel new];
-    _mastheadTitle.text = @"taurus";
+    _mastheadTitle.text = @"thermia";
     _mastheadTitle.font = [UIFont systemFontOfSize:36 weight:UIFontWeightBold];
     _mastheadTitle.textColor = UIColor.whiteColor;
     _mastheadTitle.textAlignment = NSTextAlignmentRight;
@@ -69,7 +69,7 @@ static SGModRow *pageRow(NSString *title, NSString *symbol, UIViewController *(^
     self.tableView.tableHeaderView = _masthead;
 
     _compactTitle = [UILabel new];
-    _compactTitle.text = @"taurus";
+    _compactTitle.text = @"thermia";
     _compactTitle.font = [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
     _compactTitle.textColor = UIColor.whiteColor;
     [_compactTitle sizeToFit];
@@ -123,7 +123,7 @@ static UIViewController *modSettingsPage(void) {
     // that no switch can put right, and it is worth reading before anything else.
     SGModRow *signing = SGSigningWarningRow();
     NSMutableArray<SGModRow *> *topRows = [NSMutableArray array];
-    SGModRow *update = SGActionRow(@"Taurus update available", @"Tap to view the latest release", ^{
+    SGModRow *update = SGActionRow(@"Thermia update available", @"Tap to view the latest release", ^{
         NSString *url = SGUpdateNewestRelease().url;
         if (url.length) SGOpenURL(url);
     });
@@ -173,7 +173,7 @@ static UIViewController *modSettingsPage(void) {
             mod,
         ]),
     ]];
-    return [[SGTaurusSettingsPage alloc] initWithSections:sections];
+    return [[SGThermiaSettingsPage alloc] initWithSections:sections];
 }
 
 #pragma mark - row in the settings list and the side drawer
