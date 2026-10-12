@@ -41,10 +41,16 @@ for TEMPLATE in "$ROOT"/icons/*.icon; do
   cp -R "$TEMPLATE" "$WORK/art/$NAME.icon"
   mkdir -p "$WORK/art/$NAME.icon/Assets"
   cp "$WORK/Logo.svg" "$WORK/art/$NAME.icon/Assets/Logo.svg"
-  "$ICTOOL" "$WORK/art/$NAME.icon" --export-image --output-file "$PREVIEWS/$NAME.png" --platform iOS \
-    --rendition Default --width 60 --height 60 --scale 3 >/dev/null 2>&1 || skip "ictool could not draw $NAME"
+  if ! "$ICTOOL" "$WORK/art/$NAME.icon" --export-image --output-file "$PREVIEWS/$NAME.png" --platform iOS \
+    --rendition Default --width 60 --height 60 --scale 3 >/dev/null 2>&1; then
+    echo "    skipping $NAME: Icon Composer could not draw it"
+    rm -rf "$WORK/art/$NAME.icon"
+    rm -f "$PREVIEWS/$NAME.png"
+    continue
+  fi
   [ "$NAME" = Spotify ] || NAMES+=("$NAME")
 done
+[ "${#NAMES[@]}" -gt 0 ] || skip "no alternate icon could be drawn"
 
 # An asset's identifier in the catalog is a hash of its name, and one already taken by Spotify's makes
 # car-tool refuse (exit 3), so the icons are compiled again under a suffix until none collides. The keys
