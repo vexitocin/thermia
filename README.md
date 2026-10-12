@@ -4,7 +4,7 @@
 
 <h1 align="center">thermia.</h1>
 
-<p align="center">Open-Sourced fork of chroma.pw with built-in Spotify Premium. </p>
+<p align="center">A free, open-source fork built to keep up with chroma.pw and cover its missing features.</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" alt="iOS">
@@ -28,7 +28,11 @@
   <img src="docs/screenshots/home.webp" width="16%" alt="Home">
 </p>
 
-## thermia: the free, open-sourced liquid glass spotify tweak - made my me. <3
+## thermia: a free chroma.pw-style spotify mod with liquid glass and the features you want
+
+Thermia is a free, open-source fork built to keep up with chroma.pw while staying available without
+subscriptions or premium gating. It brings the same kind of Spotify enhancements and polish, with
+all or most of the core features available for free.
 
 A no-jailbreak Theos tweak that rebuilds Spotify for iOS in Liquid Glass, injected into your own
 decrypted IPA and signed with your own certificate.
@@ -45,6 +49,13 @@ which change between releases, so another version may build and then break.
 The redesign is `UIGlassEffect`, which only exists from iOS 26. Below that the Redesigned UI switch
 is greyed out and the mod runs Spotify's own screens with everything else it adds on top. Both live
 in Settings → Mod Settings.
+
+## Why Thermia Exists
+
+Thermia exists as a free alternative to chroma.pw and similar Spotify mods, keeping the feature set
+and polish while staying open, free, and without paid upsells. It blocks Spotify's premium prompts
+rather than replacing them with a separate paywall, so the project stays a community mod instead of a
+subscription product.
 
 ## Install it
 
