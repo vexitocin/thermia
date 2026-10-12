@@ -118,7 +118,7 @@ static NSArray<NSDictionary *> *changesFromBody(NSString *body, NSString *releas
         NSString *text = [markdownLinkPattern stringByReplacingMatchesInString:line options:0 range:NSMakeRange(0, line.length) withTemplate:@"$1"];
         text = [text stringByReplacingOccurrencesOfString:@"`" withString:@""];
         text = [text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
-        if (text.length) [changes addObject:@{@"kind": kind, @"text": text, @"url": url ?: @""]];
+        if (text.length) [changes addObject:@{@"kind": kind, @"text": text, @"url": url ?: @""}];
     }
     return changes;
 }
