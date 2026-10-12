@@ -49,15 +49,15 @@ in Settings → Mod Settings.
 ## Install it
 
 Each
-[release](https://github.com/samj-exe/thermia/releases) carries the tweak's `.ipa`, install this `.ipa` file with any sideloader, such as SideStore or Feather. You do not need to build to project if you do not wish to.
+[release](https://github.com/vexitocin/thermia/releases) carries the tweak's `.ipa`, install this `.ipa` file with any sideloader, such as SideStore or Feather. You do not need to build to project if you do not wish to.
 
-Add the release source to [SideStore or Feather](https://raw.githubusercontent.com/samj-exe/thermia/stable/altstore-source.json), or add the [ESign source](https://raw.githubusercontent.com/samj-exe/thermia/stable/esign-source.json) in ESign.
+Add the release source to [SideStore or Feather](https://raw.githubusercontent.com/vexitocin/thermia/stable/altstore-source.json), or add the [ESign source](https://raw.githubusercontent.com/vexitocin/thermia/stable/esign-source.json) in ESign.
 
 ## Build it
 
 Bring a decrypted **Spotify 9.1.78** IPA; you get an unsigned
 `thermia-<mod version>.ipa` to sign with SideStore, Feather or any certificate signer. Each
-[release](https://github.com/samj-exe/thermia/releases) also carries the tweak's `.deb`.
+[release](https://github.com/vexitocin/thermia/releases) also carries the tweak's `.deb`.
 
 #### Build with GitHub Actions (recommended)
 
@@ -102,7 +102,7 @@ contribution; it is ticked once, before the first pull request is merged.
 
 <a href="https://star-history.com/#vexitocin/thermia&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=samj-exe/thermia&type=Date&theme=dark">
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=vexitocin/thermia&type=Date&theme=dark">
     <img src="https://api.star-history.com/svg?repos=vexitocin/thermia&type=Date" alt="Star history chart">
   </picture>
 </a>

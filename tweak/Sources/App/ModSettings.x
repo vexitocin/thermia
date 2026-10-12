@@ -55,12 +55,12 @@ static SGModRow *pageRow(NSString *title, NSString *symbol, UIViewController *(^
     _masthead.backgroundColor = SGPageBackground();
     _masthead.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
     _mastheadTitle = [UILabel new];
-    _mastheadTitle.text = @"thermia";
+    _mastheadTitle.text = @"thermia.";
     _mastheadTitle.font = [UIFont systemFontOfSize:36 weight:UIFontWeightBold];
     _mastheadTitle.textColor = UIColor.whiteColor;
     _mastheadTitle.textAlignment = NSTextAlignmentRight;
     _mastheadByline = [UILabel new];
-    _mastheadByline.text = @"by samj.";
+    _mastheadByline.text = @"by vexi";
     _mastheadByline.font = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
     _mastheadByline.textColor = [UIColor colorWithWhite:1 alpha:0.72];
     _mastheadByline.textAlignment = NSTextAlignmentRight;

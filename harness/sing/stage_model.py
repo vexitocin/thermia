@@ -54,7 +54,7 @@ tags:
 
 # Thermia Sing voice model
 
-The vocal separator [Thermia](https://github.com/samj-exe/thermia)'s Sing runs on the iPhone to turn a song's vocals down
+The vocal separator [Thermia](https://github.com/vexitocin/thermia)'s Sing runs on the iPhone to turn a song's vocals down
 while it plays. It is Mel-Band RoFormer with KimberleyJensen's vocal checkpoint, its spectral core
 exported for Core ML with two-second windows: a float32 `spectrum` of shape `[1, 2050, 201, 2]` in, the
 `vocals_spectrum` of the same shape out, the STFT around it done by the app. Normalization, attention,

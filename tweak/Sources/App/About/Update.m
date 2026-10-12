@@ -2,7 +2,7 @@
 #import "Core/SGCore.h"
 #import "About.h"
 
-static NSString *const kGitHubURL = @"https://api.github.com/repos/samj-exe/thermia/releases?per_page=20";
+static NSString *const kGitHubURL = @"https://api.github.com/repos/vexitocin/thermia/releases?per_page=20";
 NSString *const SGUpdateCheckedNotification = @"spotifyglass.update.checked.notification";
 
 static NSString *const kLatestRelease = @"spotifyglass.update.thermia.latest";
