@@ -26,9 +26,10 @@ static const CGFloat kOverscroll = 600;
 // Each table is indexed by the choice of the same name in HomeGradientChoices.m and is as long as
 // that list of names.
 //
-// Sampled off the design: #0B4110 at the top of the screen, level behind the header, gone by 390pt,
-// which is Medium at Medium. The other seven colours are that one taken around the wheel.
-static const uint32_t kTints[] = {0x0B4110, 0x0B4138, 0x0B2B41, 0x160B41, 0x330B41, 0x410B2E, 0x410B10, 0x412A0B};
+// Sampled off the design: Spotify green is #0B4110 at the top of the screen, level behind the
+// header, gone by 390pt, which is Medium at Medium. The rest are nearby brand-inspired tints for
+// music apps, kept at the same lightness so the white labels keep their contrast.
+static const uint32_t kTints[] = {0x0B4110, 0x410B10, 0x412A0B, 0x410B2E, 0x3B0B41, 0x0B3A35, 0x8A3A0B, 0x0B2B41};
 static const CGFloat kStrengths[] = {0.62, 1.0, 1.45};
 // 0 stands for the whole screen, which is only known once the page has been laid out.
 static const CGFloat kHeights[] = {260, 390, 560, 0};
