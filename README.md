@@ -14,6 +14,7 @@
 </p>
 
 <p align="center">
+  <a href="https://vexitocin.github.io/thermia/">Website</a> ·
   <a href="#build-it">Build it</a> ·
   <a href="docs/tweaks.md">Hack on it</a> ·
   <a href="#install-it">Install it</a>

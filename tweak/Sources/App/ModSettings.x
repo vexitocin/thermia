@@ -133,6 +133,12 @@ static UIViewController *modSettingsPage(void) {
     [topRows addObject:update];
     if (signing) [topRows addObject:signing];
     [sections addObject:SGSection(nil, topRows)];
+    SGModRow *spoofPremium = SGSwitchRow(@"Spoof Premium", nil, SGKeyFakePremium);
+    spoofPremium.warning = SGFakePremiumWarning;
+    NSMutableArray<SGModRow *> *quickOptions = [NSMutableArray arrayWithObject:SGWithSymbol(spoofPremium, @"crown")];
+    SGModRow *appIcon = SGAppIconRow();
+    if (appIcon) [quickOptions addObject:SGWithSymbol(appIcon, @"app")];
+    [sections addObject:SGNotedSection(@"Quick options", quickOptions, SGRestartNote)];
     SGModRow *mod = pageRow(@"Mod", @"info.circle", ^UIViewController *{ return SGAboutPage(); });
     mod.value = ^NSString *{ return @(SG_VERSION); };
     // The audio effects work on the sound, so both looks have them, with what they are doing beside the chevron.

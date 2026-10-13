@@ -41,8 +41,6 @@ UIViewController *SGAboutPage(void) {
         SGStatRow(@"Version", ^NSString *{ return @(SG_VERSION); }),
         SGStatRow(@"Spotify", ^NSString *{ return spotify; }),
     ])];
-    SGModRow *appIcon = SGAppIconRow();
-    if (appIcon) [sections addObject:SGSection(nil, @[withSymbol(appIcon, @"app")])];
     [sections addObjectsFromArray:@[
         SGSection(nil, @[
             withSymbol(SGPageRow(@"Updates", ^UIViewController *{ return SGUpdatePage(); }), @"arrow.down.circle"),

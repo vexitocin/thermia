@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Thermia is a free, open-source Spotify tweak for iOS with a Liquid Glass redesign, richer lyrics, sound controls, and deep customization.">
+    <meta property="og:title" content="thermia. | A different temperature for Spotify">
+    <meta property="og:description" content="A free, open-source Spotify tweak for iOS. No subscriptions. No paid tiers.">
+    <meta property="og:image" content="https://vexitocin.github.io/thermia/icon.png">
+    <title>thermia. | A different temperature for Spotify</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="Thermia home">
+            <img src="icon.png" width="42" height="42" alt="">
+            <span>thermia<span class="brand-dot">.</span></span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+            <span></span><span></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <a href="#features">Features</a>
+            <a href="#screens">Screens</a>
+            <a href="#install">Install</a>
+            <a class="nav-github" href="https://github.com/vexitocin/thermia">Source <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <img class="hero-phone" src="screenshots/now-playing.webp" alt="Thermia's redesigned player with full-screen lyrics and Liquid Glass controls">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="status-dot"></span> AN OPEN PROJECT FOR IOS</p>
+                <h1 id="hero-title">thermia<span class="brand-dot">.</span></h1>
+                <p class="hero-lede">Your Spotify, at a different temperature.</p>
+                <p class="hero-description">A free, open-source iOS tweak with a Liquid Glass redesign, richer lyrics, thoughtful audio tools, and room to make it yours.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" id="release-link" href="https://github.com/vexitocin/thermia/releases/latest">
+                        <span id="release-label">Get the latest release</span><span aria-hidden="true">↗</span>
+                    </a>
+                    <a class="button button-quiet" href="https://github.com/vexitocin/thermia">Explore the source <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="hero-note">No subscriptions. No paid tiers. Not affiliated with Spotify.</p>
+            </div>
+            <a class="scroll-cue" href="#features"><span>01</span> Take a closer look <span aria-hidden="true">↓</span></a>
+            <p class="release-stamp"><span id="release-version">CURRENT BUILD / 0.52.1</span><span>BUILT BY VEXI</span></p>
+        </section>
+
+        <section class="spec-strip" aria-label="Compatibility">
+            <div><span class="spec-value">16.1+</span><span class="spec-label">Native look</span></div>
+            <div><span class="spec-value">26+</span><span class="spec-label">Liquid Glass redesign</span></div>
+            <div><span class="spec-value">20</span><span class="spec-label">Accent presets</span></div>
+            <div><span class="spec-value">0</span><span class="spec-label">Subscription fees</span></div>
+        </section>
+
+        <section class="section features-section" id="features" aria-labelledby="features-title">
+            <div class="section-heading">
+                <p class="eyebrow">BUILT AROUND THE LISTENING</p>
+                <h2 id="features-title">Small details.<br><span>Different feeling.</span></h2>
+                <p>Keep Spotify's familiar screens, or switch to a considered new look. The useful things work either way.</p>
+            </div>
+            <div class="feature-list">
+                <article class="feature-row">
+                    <span class="feature-number">01</span>
+                    <div><h3>Two ways to listen</h3><p>Stay close to Spotify's native interface, or make the iOS 26 Liquid Glass redesign your own.</p></div>
+                    <span class="feature-mark" aria-hidden="true">◌</span>
+                </article>
+                <article class="feature-row">
+                    <span class="feature-number">02</span>
+                    <div><h3>Lyrics with a pulse</h3><p>Word-timed lyrics, translations, line meanings, lock-screen lyrics, and a karaoke view that follows the song.</p></div>
+                    <span class="feature-mark feature-mark-green" aria-hidden="true">♪</span>
+                </article>
+                <article class="feature-row">
+                    <span class="feature-number">03</span>
+                    <div><h3>Shape the sound</h3><p>Fine-tune speed and pitch, explore audio effects, and let music haptics move with the track.</p></div>
+                    <span class="feature-mark" aria-hidden="true">〰</span>
+                </article>
+                <article class="feature-row">
+                    <span class="feature-number">04</span>
+                    <div><h3>Make it yours</h3><p>Twenty accent themes, custom hex colors, typefaces, alternate app icons, and more ways to set the tone.</p></div>
+                    <span class="feature-mark" aria-hidden="true">✳</span>
+                </article>
+                <article class="feature-row">
+                    <span class="feature-number">05</span>
+                    <div><h3>Less getting in the way</h3><p>Optional controls for ads, upsells, privacy, blocked artists, and the interruptions you would rather skip.</p></div>
+                    <span class="feature-mark feature-mark-green" aria-hidden="true">×</span>
+                </article>
+                <article class="feature-row">
+                    <span class="feature-number">06</span>
+                    <div><h3>Music beyond the app</h3><p>Bring lyrics, playback controls, and your queue to the lock screen with a Live Activity.</p></div>
+                    <span class="feature-mark" aria-hidden="true">▣</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="screens-section" id="screens" aria-labelledby="screens-title">
+            <div class="screens-heading">
+                <div>
+                    <p class="eyebrow">A FEW FRAMES FROM THE APP</p>
+                    <h2 id="screens-title">Made for the <span>whole session.</span></h2>
+                </div>
+                <div class="gallery-controls" aria-label="Screenshot controls">
+                    <button type="button" data-gallery-scroll="-1" aria-label="Scroll screenshots left">←</button>
+                    <button type="button" data-gallery-scroll="1" aria-label="Scroll screenshots right">→</button>
+                </div>
+            </div>
+            <div class="screenshot-rail" id="screenshot-rail" tabindex="0" aria-label="Thermia screenshots">
+                <figure class="screenshot-item">
+                    <img src="screenshots/home.webp" alt="Spotify Home with Thermia's glass tab bar and now playing bar" loading="lazy">
+                    <figcaption><span>01 / HOME</span><span>Pick up where you left off.</span></figcaption>
+                </figure>
+                <figure class="screenshot-item screenshot-item-featured">
+                    <img src="screenshots/now-playing.webp" alt="Thermia's redesigned album and player screen" loading="lazy">
+                    <figcaption><span>02 / PLAYER</span><span>Keep the music in focus.</span></figcaption>
+                </figure>
+                <figure class="screenshot-item">
+                    <img src="screenshots/album.webp" alt="An album page in Thermia's redesigned interface" loading="lazy">
+                    <figcaption><span>03 / ALBUMS</span><span>A cleaner view of the record.</span></figcaption>
+                </figure>
+                <figure class="screenshot-item">
+                    <img src="screenshots/playlist.webp" alt="A playlist page in Thermia" loading="lazy">
+                    <figcaption><span>04 / PLAYLISTS</span><span>Your collections, your way.</span></figcaption>
+                </figure>
+                <figure class="screenshot-item">
+                    <img src="screenshots/live-activity.webp" alt="Thermia playback controls in an iOS Live Activity" loading="lazy">
+                    <figcaption><span>05 / LOCK SCREEN</span><span>Stay in the flow.</span></figcaption>
+                </figure>
+            </div>
+            <p class="screens-footnote">The redesign shown requires iOS 26. Screens shown are from Spotify and Thermia in use.</p>
+        </section>
+
+        <section class="install-section" id="install" aria-labelledby="install-title">
+            <div class="install-copy">
+                <p class="eyebrow">YOUR DEVICE. YOUR SIGNATURE.</p>
+                <h2 id="install-title">Get it running.</h2>
+                <p>Install a release with your sideloader, or build a personalized IPA from your own decrypted Spotify copy.</p>
+            </div>
+            <div class="install-options">
+                <a class="install-option" href="https://github.com/vexitocin/thermia/releases/latest">
+                    <span class="install-index">A</span><span><strong>Install a release</strong><small>Get the latest IPA, then sign and install with Feather, SideStore, or another sideloader.</small></span><span class="option-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="install-option" href="https://github.com/vexitocin/thermia/actions/workflows/build-ipa.yml">
+                    <span class="install-index">B</span><span><strong>Build your own</strong><small>Run the GitHub Actions builder with a direct link to your decrypted Spotify IPA.</small></span><span class="option-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="install-option" href="https://github.com/vexitocin/thermia#signing">
+                    <span class="install-index">C</span><span><strong>Read the setup notes</strong><small>Check compatibility, signing, and the complete build guide.</small></span><span class="option-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+            <p class="install-caveat">Thermia does not include a Spotify IPA. Use a compatible decrypted copy and sign it with your own certificate. Spotify 9.1.78 is the tested version.</p>
+        </section>
+
+        <section class="closing-line" aria-label="Project principles">
+            <img src="icon.png" alt="" width="54" height="54" loading="lazy">
+            <p>Open source, independently built, and free to use.<br><span>Keep the music. Lose the noise.</span></p>
+            <a href="https://github.com/vexitocin/thermia">Read the project on GitHub <span aria-hidden="true">↗</span></a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="footer-brand" href="#top">thermia<span class="brand-dot">.</span></a>
+        <span>Not affiliated with Spotify AB.</span>
+        <div><a href="https://github.com/vexitocin/thermia/releases">Releases</a><a href="tweaks.md">Developer guide</a><a href="https://github.com/vexitocin/thermia/blob/main/LICENSE">License</a></div>
+        <span class="footer-year">© <span id="current-year">2026</span> Thermia contributors</span>
+    </footer>
+</body>
+</html>

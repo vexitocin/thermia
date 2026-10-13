@@ -23,16 +23,26 @@ static NSArray<NSDictionary *> *themePresets(void) {
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         presets = @[
-            @{@"name": @"Spotify green", @"rgb": @(-1)},
-            @{@"name": @"Thermia green", @"rgb": @(0x37F200)},
-            @{@"name": @"Arctic", @"rgb": @(0x83CEFF)},
-            @{@"name": @"Rose", @"rgb": @(0xF65E9D)},
-            @{@"name": @"Sunset", @"rgb": @(0xFF814A)},
-            @{@"name": @"Apple red", @"rgb": @(0xFA243C)},
-            @{@"name": @"SoundCloud orange", @"rgb": @(0xFF5500)},
-            @{@"name": @"Tidal teal", @"rgb": @(0x00B4B4)},
-            @{@"name": @"Violet", @"rgb": @(0xA77BFF)},
-            @{@"name": @"Citrus", @"rgb": @(0xD6E945)},
+            @{ @"name": @"Spotify green", @"rgb": @(-1)},
+            @{ @"name": @"Thermia green", @"rgb": @(0x37F200)},
+            @{ @"name": @"Arctic", @"rgb": @(0x83CEFF)},
+            @{ @"name": @"Rose", @"rgb": @(0xF65E9D)},
+            @{ @"name": @"Sunset", @"rgb": @(0xFF814A)},
+            @{ @"name": @"Apple red", @"rgb": @(0xFA243C)},
+            @{ @"name": @"SoundCloud orange", @"rgb": @(0xFF5500)},
+            @{ @"name": @"Tidal teal", @"rgb": @(0x00B4B4)},
+            @{ @"name": @"Violet", @"rgb": @(0xA77BFF)},
+            @{ @"name": @"Citrus", @"rgb": @(0xD6E945)},
+            @{ @"name": @"Cherry blossom", @"rgb": @(0xFF6FAE)},
+            @{ @"name": @"Electric blue", @"rgb": @(0x4D7CFE)},
+            @{ @"name": @"Ocean", @"rgb": @(0x0077B6)},
+            @{ @"name": @"Mint", @"rgb": @(0x3DDC97)},
+            @{ @"name": @"Amber", @"rgb": @(0xFFC857)},
+            @{ @"name": @"Lavender", @"rgb": @(0xC084FC)},
+            @{ @"name": @"Crimson", @"rgb": @(0xE63946)},
+            @{ @"name": @"Peach", @"rgb": @(0xFF9F80)},
+            @{ @"name": @"Glacier", @"rgb": @(0x7FDBFF)},
+            @{ @"name": @"Soft white", @"rgb": @(0xF5F5F5)},
         ];
     });
     return presets;

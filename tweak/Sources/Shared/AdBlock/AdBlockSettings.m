@@ -49,9 +49,6 @@ UIViewController *SGAdsSettingsPage(void) {
     })];
     [counts addObject:SGActionRow(@"Reset the counters", nil, ^{ SGResetAdBlock(); })];
 
-    SGModRow *fakePremium = SGSwitchRow(@"Spoof Premium", nil, SGKeyFakePremium);
-    fakePremium.warning = SGFakePremiumWarning;
-
     NSMutableArray<SGModRow *> *ads = [NSMutableArray arrayWithArray:@[
         SGWithSymbol(SGSwitchRow(@"Hide ads", nil, SGKeyHideAds), @"speaker.slash"),
         SGWithSymbol(SGSwitchRow(@"Hide upsells", nil, SGKeyHideUpsells), @"hand.raised"),
@@ -62,9 +59,6 @@ UIViewController *SGAdsSettingsPage(void) {
 
     return [[SGModPage alloc] initWithTitle:@"Premium, ads & privacy" intro:SGRestartNote sections:@[
         SGNotedSection(@"Ads", ads, @"Audio ads between songs need Spoof Premium."),
-        SGNotedSection(@"Premium", @[
-            SGWithSymbol(fakePremium, @"crown"),
-        ], @"Free accounts only."),
         SGPrivacySection(),
         SGSection(@"Ads blocked so far", counts),
         SGPrivacyCountersSection(),
