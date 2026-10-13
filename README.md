@@ -4,7 +4,7 @@
 
 <h1 align="center">thermia.</h1>
 
-<p align="center">A free, open-source fork built to keep up with chroma.pw and cover its missing features.</p>
+<p align="center">A free, open-source fork built to keep up with chroma.pw and cover its missing features and enhance customisation</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" alt="iOS">
