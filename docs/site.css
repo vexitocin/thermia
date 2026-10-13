@@ -7,6 +7,7 @@
     --muted: #92999d;
     --line: rgba(235, 243, 247, 0.14);
     --ice: #c2e6ff;
+    --ice: color(display-p3 0.76 0.90 1);
     --ice-dim: #86b5d4;
     --green: #80ed8a;
     --font-display: 'Space Grotesk', 'Avenir Next', sans-serif;
