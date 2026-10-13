@@ -145,7 +145,9 @@ static UIImage *preview(NSString *file) {
 @end
 
 SGModRow *SGAppIconRow(void) {
-    if (availableFiles().count < 2) return nil;
+    // Show the row as soon as at least one valid alternate icon was compiled into the IPA; a single
+    // surviving variant is still a usable app-icon picker, while the stock-only build stays hidden.
+    if (availableFiles().count < 1) return nil;
     if (@available(iOS 26.0, *)) {
         SGModRow *row = SGPageRow(@"App icon", ^UIViewController *{ return [SGAppIconPage new]; });
         row.value = ^NSString *{ return titleOf(currentFile()); };
