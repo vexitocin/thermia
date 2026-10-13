@@ -41,6 +41,42 @@ for TEMPLATE in "$ROOT"/icons/*.icon; do
   cp -R "$TEMPLATE" "$WORK/art/$NAME.icon"
   mkdir -p "$WORK/art/$NAME.icon/Assets"
   cp "$WORK/Logo.svg" "$WORK/art/$NAME.icon/Assets/Logo.svg"
+  case "$NAME" in
+    *Pride)
+      python3 - "$WORK/art/$NAME.icon" <<'PY'
+import json, pathlib, sys
+
+icon = pathlib.Path(sys.argv[1])
+document_path = icon / "icon.json"
+document = json.loads(document_path.read_text())
+group = document["groups"][0]
+logo = next(layer for layer in group["layers"] if layer.get("image-name") == "Logo.svg")
+colors = logo["fill"]["linear-gradient"]
+layers = []
+for index, color in enumerate(colors):
+    image_name = f"FlagBand{index}.svg"
+    y = index / len(colors)
+    height = 1 / len(colors)
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">'
+        f'<rect x="0" y="{y * 1000:.4f}" width="1000" height="{height * 1000:.4f}" fill="#fff"/>'
+        '</svg>'
+    )
+    (icon / "Assets" / image_name).write_text(svg)
+    layers.append({
+        "fill": {"solid": color},
+        "image-name": image_name,
+        "name": f"FlagBand{index}",
+        "position": {"scale": 1.0, "translation-in-points": [0, 0]},
+        "glass": False,
+    })
+logo["fill"] = {"solid": "extended-gray:1.00000,1.00000"}
+group["layers"] = layers + [logo]
+group["translucency"] = {"enabled": True, "value": 0.0}
+document_path.write_text(json.dumps(document, separators=(",", ":")))
+PY
+      ;;
+  esac
   if ! "$ICTOOL" "$WORK/art/$NAME.icon" --export-image --output-file "$PREVIEWS/$NAME.png" --platform iOS \
     --rendition Default --width 60 --height 60 --scale 3 >/dev/null 2>&1; then
     echo "    skipping $NAME: Icon Composer could not draw it"
@@ -63,9 +99,28 @@ for SUFFIX in "" 2 3 4 5 6 7 8; do
     cp -R "$WORK/art/$NAME.icon" "$WORK/src/SGAppIcon$NAME$SUFFIX.icon"
     ARGS+=("$WORK/src/SGAppIcon$NAME$SUFFIX.icon" --alternate-app-icon "SGAppIcon$NAME$SUFFIX")
   done
-  xcrun actool "${ARGS[@]}" --compile "$WORK/car" --platform iphoneos --minimum-deployment-target 26.0 \
+  if ! xcrun actool "${ARGS[@]}" --compile "$WORK/car" --platform iphoneos --minimum-deployment-target 26.0 \
     --target-device iphone --target-device ipad --include-all-app-icons --output-format human-readable-text > "$WORK/actool.log" 2>&1 \
-    && [ -f "$WORK/car/Assets.car" ] || { cat "$WORK/actool.log" >&2; skip "actool failed"; }
+    || [ ! -f "$WORK/car/Assets.car" ]; then
+    echo "    batch compile failed; checking icons individually"
+    VALID_NAMES=()
+    for NAME in "${NAMES[@]}"; do
+      PROBE="$WORK/probe/$NAME"
+      rm -rf "$PROBE"
+      mkdir -p "$PROBE"
+      if xcrun actool "$WORK/src/SGAppIcon$NAME$SUFFIX.icon" --alternate-app-icon "SGAppIcon$NAME$SUFFIX" \
+        --compile "$PROBE" --platform iphoneos --minimum-deployment-target 26.0 \
+        --target-device iphone --target-device ipad --include-all-app-icons --output-format human-readable-text \
+        > "$WORK/probe.log" 2>&1 && [ -f "$PROBE/Assets.car" ]; then
+        VALID_NAMES+=("$NAME")
+      else
+        echo "    skipping $NAME: Icon Composer could not compile it"
+      fi
+    done
+    NAMES=("${VALID_NAMES[@]}")
+    [ "${#NAMES[@]}" -gt 0 ] || { cat "$WORK/actool.log" >&2; skip "no alternate icon could be compiled"; }
+    continue
+  fi
   cp "$CAR" "$WORK/merged.car"
   STATUS=0
   "$WORK/car-tool" merge "$WORK/merged.car" "$WORK/car/Assets.car" >/dev/null || STATUS=$?
